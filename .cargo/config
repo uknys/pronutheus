@@ -1,0 +1,5 @@
+[build]
+target = "mips-unknown-linux-uclibc"
+
+[target.mips-unknown-linux-uclibc]
+linker = "mips-openwrt-linux-gcc"
