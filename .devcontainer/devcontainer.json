@@ -4,9 +4,7 @@
     "build": {
 		"dockerfile": "Dockerfile"
 	},
-
-    "runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
-
+    
 	"settings": {
         "rust-analyzer.serverPath": "/usr/local/bin/rust-analyzer",
 		"files.watcherExclude": {

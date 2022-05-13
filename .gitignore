@@ -60,3 +60,6 @@ target/
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+base_sources/gpon_onu_drv-4.5.0
+base_sources/gpon_optic_drv-4.5.0
