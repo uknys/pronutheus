@@ -10,6 +10,10 @@ I'm using a FS GPON-ONU-34-20BI for all the testing.
 
 For now it only shows the equivalent of `onu ploamsg` but it'll become a full exporter !
 
+## Compile
+
+You can use the container that is included in .devcontainer and use `xargo build` to build the project.
+
 ## Sources
 https://github.com/kbridgers/VOLTE4GFAX/tree/master/
 
