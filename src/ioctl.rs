@@ -7,7 +7,7 @@ extern "C" {
     fn ioctl(fd: c_int, request: c_ulong, ...) -> c_int;
 }
 
-struct IoCtlCommand<const DIRECTION: char, const MAGIC: u32, const TYPE: u32, T> {
+pub struct IoCtlCommand<const DIRECTION: char, const MAGIC: u32, const TYPE: u32, T> {
     _t: PhantomData<T>,
 }
 
@@ -16,7 +16,7 @@ impl<const DIRECTION: char, const MAGIC: u32, const TYPE: u32, T>
 {
     const VALUE: u32 = (TYPE << 0x0)
         | (MAGIC << 0x8)
-        | ((::std::mem::size_of::<T>() as u32) << 0x10)
+        | ((mem::size_of::<T>() as u32) << 0x10)
         | (match DIRECTION {
             'N' => 0x0,
             'R' => 0x2,
@@ -54,15 +54,11 @@ impl<T> FioExchange<T> {
 pub fn request<const DIRECTION: char, const MAGIC: u32, const TYPE: u32, T: Default>(
     fd: RawFd,
 ) -> Result<T, i32> {
-    let data: T = Default::default();
+    let data = T::default();
     let fifo = FioExchange::new(&data);
 
     unsafe {
-        let res = ioctl(fd, IoCtlCommand::<DIRECTION, MAGIC, TYPE, T>::VALUE, &fifo);
-
-        if res != 0 {
-            return Err(res);
-        }
+        ioctl(fd, IoCtlCommand::<DIRECTION, MAGIC, TYPE, T>::VALUE, &fifo);
     }
 
     if fifo.is_error() {

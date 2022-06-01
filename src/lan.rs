@@ -1,8 +1,10 @@
-pub const MAGIC: u32 = 6;
+#![allow(non_camel_case_types)]
+
+pub const MAGIC: u32 = 7;
 pub const LAN_GET_PORT: u32 = 9;
 
 #[repr(C)]
-#[derive(Clone, Copy, Debug)]
+#[derive(Debug)]
 pub enum LanModeInterface {
     OFF = 0,
     GPHY = 1,
@@ -23,7 +25,7 @@ pub enum LanModeInterface {
 }
 
 #[repr(C)]
-#[derive(Clone, Copy, Debug)]
+#[derive(Debug)]
 pub enum LanPhyStatus {
     Off = 0,
     Down = 1,
@@ -35,7 +37,7 @@ pub enum LanPhyStatus {
 }
 
 #[repr(C)]
-#[derive(Clone, Copy, Debug)]
+#[derive(Debug)]
 pub enum LanModeSpeed {
     Auto = 0,
     Speed10 = 1,
@@ -46,7 +48,7 @@ pub enum LanModeSpeed {
 }
 
 #[repr(C)]
-#[derive(Clone, Copy, Debug)]
+#[derive(Debug)]
 pub enum LanModeDuplex {
     Auto = 0,
     Full = 1,
@@ -54,7 +56,7 @@ pub enum LanModeDuplex {
 }
 
 #[repr(C)]
-#[derive(Clone, Copy, Debug)]
+#[derive(Debug)]
 pub struct LanPortStatus {
     index: u32,
     mode: LanModeInterface,

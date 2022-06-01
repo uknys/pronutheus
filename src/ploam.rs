@@ -1,3 +1,5 @@
+#![allow(non_camel_case_types)]
+
 pub const MAGIC: u32 = 6;
 pub const PLOAM_GET_STATE: u32 = 4;
 
