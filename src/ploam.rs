@@ -13,7 +13,7 @@ pub enum PloamState {
     Ranging = 4,
     Operation = 5,
     POPUP = 6,
-    EmergencyStop = 7
+    EmergencyStop = 7,
 }
 
 #[repr(C)]
@@ -21,11 +21,15 @@ pub enum PloamState {
 pub struct PloamStateData {
     current_state: PloamState,
     previous_state: PloamState,
-    elapsed_msec: u32
+    elapsed_msec: u32,
 }
 
 impl ::std::default::Default for PloamStateData {
     fn default() -> Self {
-        PloamStateData { current_state: PloamState::Operation, previous_state: PloamState::Ranging, elapsed_msec: 0 }
+        PloamStateData {
+            current_state: PloamState::Operation,
+            previous_state: PloamState::Ranging,
+            elapsed_msec: 0,
+        }
     }
 }

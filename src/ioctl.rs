@@ -1,7 +1,7 @@
-use std::mem;
 use std::marker::PhantomData;
-use std::os::unix::prelude::RawFd;
+use std::mem;
 use std::os::raw::{c_int, c_ulong};
+use std::os::unix::prelude::RawFd;
 
 extern "C" {
     fn ioctl(fd: c_int, request: c_ulong, ...) -> c_int;
@@ -14,7 +14,7 @@ pub struct IoCtlCommand<const DIRECTION: char, const MAGIC: u32, const TYPE: u32
 impl<const DIRECTION: char, const MAGIC: u32, const TYPE: u32, T>
     IoCtlCommand<DIRECTION, MAGIC, TYPE, T>
 {
-    const VALUE: u32 = (TYPE << 0x0)
+    const VALUE: u32 = TYPE
         | (MAGIC << 0x8)
         | ((mem::size_of::<T>() as u32) << 0x10)
         | (match DIRECTION {

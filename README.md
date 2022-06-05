@@ -17,6 +17,8 @@ You can use the container that is included in .devcontainer and use `xargo build
 ## How to use it
 
 ```
+$ xargo build --release
+
 $ export SSHPASS='7sp!lwUBz1'
 
 $ sshpass -e scp -o StrictHostKeyChecking=no -o KexAlgorithms=+diffie-hellman-group1-sha1 -o HostKeyAlgorithms=+ssh-rsa target/mips-unknown-linux-uclibc/release/pronutheus ONTUSER@192.168.1.10:/home/ONTUSER/

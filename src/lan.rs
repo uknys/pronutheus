@@ -11,17 +11,17 @@ pub enum LanModeInterface {
     EPHY = 2,
     SGMII_SLOW = 3,
     SGMII_FAST = 4,
-    RGMII_MAC  = 5,
-    RMII_MAC   = 6,
-    RMII_PHY   = 7,
-    GMII_MAC   = 8,
-    GMII_PHY   = 9,
-    MII_MAC    = 10,
-    MII_PHY    = 11,
-    TMII_MAC   = 12,
-    TMII_PHY   = 13,
-    TBI_MAC    = 14,
-    TBI_PHY    = 15
+    RGMII_MAC = 5,
+    RMII_MAC = 6,
+    RMII_PHY = 7,
+    GMII_MAC = 8,
+    GMII_PHY = 9,
+    MII_MAC = 10,
+    MII_PHY = 11,
+    TMII_MAC = 12,
+    TMII_PHY = 13,
+    TBI_MAC = 14,
+    TBI_PHY = 15,
 }
 
 #[repr(C)]
@@ -44,7 +44,7 @@ pub enum LanModeSpeed {
     Speed100 = 2,
     Speed200 = 3,
     Speed1000 = 4,
-    Speed2500 = 5
+    Speed2500 = 5,
 }
 
 #[repr(C)]
@@ -52,7 +52,7 @@ pub enum LanModeSpeed {
 pub enum LanModeDuplex {
     Auto = 0,
     Full = 1,
-    Half = 2
+    Half = 2,
 }
 
 #[repr(C)]
@@ -62,11 +62,17 @@ pub struct LanPortStatus {
     mode: LanModeInterface,
     port_enable: u32,
     link_status: LanModeSpeed,
-    phy_duplex: LanModeDuplex
+    phy_duplex: LanModeDuplex,
 }
 
 impl ::std::default::Default for LanPortStatus {
     fn default() -> Self {
-        LanPortStatus { index: 0u32, mode: LanModeInterface::OFF, port_enable: 0, link_status: LanModeSpeed::Auto, phy_duplex: LanModeDuplex::Auto }
+        LanPortStatus {
+            index: 0u32,
+            mode: LanModeInterface::OFF,
+            port_enable: 0,
+            link_status: LanModeSpeed::Auto,
+            phy_duplex: LanModeDuplex::Auto,
+        }
     }
-}    
+}
